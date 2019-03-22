@@ -175,10 +175,7 @@ class Category extends React.Component {
             </span>
           </div>
           <div>
-            <Tooltip
-              content="Show values on graph at centroid of associated cells"
-              position="bottom"
-            >
+            <Tooltip content="Show labels on graph" position="bottom">
               <Button
                 minimal
                 style={{ marginRight: 5 }}
