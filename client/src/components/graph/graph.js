@@ -40,7 +40,9 @@ import { World } from "../../util/stateManager";
   scatterplotYYaccessor: state.controls.scatterplotYYaccessor,
   celllist1: state.differential.celllist1,
   celllist2: state.differential.celllist2,
-  library_versions: _.get(state.config, "library_versions", null)
+  library_versions: _.get(state.config, "library_versions", null),
+  metadataFieldLabelsToShowOnGraph:
+    state.controls.metadataFieldLabelsToShowOnGraph
 }))
 class Graph extends React.Component {
   constructor(props) {
