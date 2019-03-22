@@ -10,7 +10,9 @@ import sortedCategoryValues from "./util";
 
 @connect(state => ({
   colorAccessor: state.controls.colorAccessor,
-  categoricalSelectionState: state.controls.categoricalSelectionState
+  categoricalSelectionState: state.controls.categoricalSelectionState,
+  metadataFieldLabelsToShowOnGraph:
+    state.controls.metadataFieldLabelsToShowOnGraph
 }))
 class Category extends React.Component {
   constructor(props) {
@@ -55,6 +57,14 @@ class Category extends React.Component {
     dispatch({
       type: "color by categorical metadata",
       colorAccessor: metadataField
+    });
+  };
+
+  handleShowLabelsOnGraphChange = () => {
+    const { dispatch, metadataField } = this.props;
+    dispatch({
+      type: "show labels on graph for given metadata field",
+      data: metadataField
     });
   };
 
@@ -107,7 +117,8 @@ class Category extends React.Component {
     const {
       metadataField,
       colorAccessor,
-      categoricalSelectionState
+      categoricalSelectionState,
+      metadataFieldLabelsToShowOnGraph
     } = this.props;
     const { isTruncated } = categoricalSelectionState[metadataField];
     return (
@@ -163,14 +174,34 @@ class Category extends React.Component {
               )}
             </span>
           </div>
-          <Tooltip content="Use as color scale" position="bottom">
-            <Button
-              onClick={this.handleColorChange}
-              active={colorAccessor === metadataField}
-              intent={colorAccessor === metadataField ? "primary" : "none"}
-              icon="tint"
-            />
-          </Tooltip>
+          <div>
+            <Tooltip
+              content="Show values on graph at centroid of associated cells"
+              position="bottom"
+            >
+              <Button
+                minimal
+                style={{ marginRight: 5 }}
+                onClick={this.handleShowLabelsOnGraphChange}
+                active={metadataFieldLabelsToShowOnGraph === metadataField}
+                intent={
+                  metadataFieldLabelsToShowOnGraph === metadataField
+                    ? "primary"
+                    : "none"
+                }
+                icon="map-marker"
+              />
+            </Tooltip>
+            <Tooltip content="Use as color scale" position="bottom">
+              <Button
+                minimal
+                onClick={this.handleColorChange}
+                active={colorAccessor === metadataField}
+                intent={colorAccessor === metadataField ? "primary" : "none"}
+                icon="tint"
+              />
+            </Tooltip>
+          </div>
         </div>
         <div style={{ marginLeft: 26 }}>
           {isExpanded ? this.renderCategoryItems() : null}

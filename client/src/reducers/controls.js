@@ -45,7 +45,7 @@ const Controls = (
     colors: {},
 
     resettingInterface: false,
-
+    metadataFieldLabelsToShowOnGraph: null,
     opacityForDeselectedCells: 0.2,
     graphBrushSelection: null,
     continuousSelection: null,
@@ -561,6 +561,16 @@ const Controls = (
         crossfilter
       };
     }
+
+    /*
+      add values/labels from a metadata field to the graph.
+      if user clicks 'tissue', put heart and lung on the centroid of the cells
+    */
+    case "show labels on graph for given metadata field":
+      return {
+        ...state,
+        metadataFieldLabelsToShowOnGraph: action.data
+      };
 
     /*******************************
               Color Scale
