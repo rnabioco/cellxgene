@@ -111,11 +111,10 @@ class CategoryValue extends React.Component {
         className={styles.value}
         data-testclass="categorical-row"
         style={{
-          padding: "4px 7px",
+          padding: "5px 7px",
           display: "flex",
           alignItems: "baseline",
           justifyContent: "space-between",
-          marginBottom: "2px",
           borderRadius: "2px"
         }}
         onMouseEnter={this.handleMouseEnter}
