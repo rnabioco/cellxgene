@@ -358,12 +358,16 @@ class FileArea(QFrame):
 
 def main():
     freeze_support()
+
     # This generates an error.log file on error
     sys.excepthook = cef.ExceptHook  # To shutdown all CEF processes on error
     settings = {}
     # Instead of timer loop
     if MAC:
         settings["external_message_pump"] = True
+    if getattr(sys, 'frozen', False):
+        settings["framework_dir_path"] = join(sys._MEIPASS, "Chromium Embedded Framework.framework")
+        settings["resources_dir_path"] = join(sys._MEIPASS, "Chromium Embedded Framework.framework/Resources")
 
     # Create and launch cef browser and qt window
     cef.Initialize(settings)
