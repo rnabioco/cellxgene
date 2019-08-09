@@ -335,9 +335,6 @@ class Graph extends React.Component {
       }
 
       const handleMouseEnter = d => {
-        console.log("colorAccessor", colorAccessor);
-        console.log("key", d.key);
-
         dispatch({
           type: "category value mouse hover start",
           metadataField: colorAccessor,
