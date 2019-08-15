@@ -67,7 +67,6 @@ function attachCamera(canvas, opts, changeCallBack) {
     if (camera.distance < scaleMin) camera.distance = scaleMin;
 
     if (change) {
-      console.log("change");
       changeCallBack();
     }
 
