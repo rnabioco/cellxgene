@@ -210,8 +210,6 @@ class Graph extends React.Component {
           0 /* ||
         graphInteractionMode === "zoom" */
       ) {
-        console.log("exit no redraw");
-
         // Return without redrawing the svg layer
         return;
       }
