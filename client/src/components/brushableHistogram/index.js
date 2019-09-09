@@ -399,6 +399,16 @@ class HistogramBrush extends React.Component {
     const unclippedRangeMaxColor =
       world.clipQuantiles.max === 1 ? "#bbb" : globals.blue;
 
+    const graphMargins = {
+      top: 8,
+      right: globals.leftSidebarSectionPadding,
+      bottom: 0,
+      left: globals.leftSidebarSectionPadding
+    };
+
+    const graphWidth = 365 - graphMargins.left - graphMargins.right;
+    const graphHeight = 180 - graphMargins.top - graphMargins.bottom;
+
     return (
       <div
         id={`histogram_${fieldForId}`}
@@ -418,7 +428,7 @@ class HistogramBrush extends React.Component {
           style={{
             display: "flex",
             justifyContent: "flex-end",
-            padding: `${globals.leftSidebarSectionPadding}px ${globals.leftSidebarSectionPadding}px 8px ${globals.leftSidebarSectionPadding}px`
+            padding: `${globals.leftSidebarSectionPadding}px ${globals.leftSidebarSectionPadding}px 0px ${globals.leftSidebarSectionPadding}px`
           }}
         >
           {isDiffExp || isUserDefined ? (
