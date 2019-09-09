@@ -411,7 +411,6 @@ class HistogramBrush extends React.Component {
             : "histogram-continuous-metadata"
         }
         style={{
-          padding: globals.leftSidebarSectionPadding,
           backgroundColor: zebra ? globals.lightestGrey : "white"
         }}
       >
@@ -419,7 +418,7 @@ class HistogramBrush extends React.Component {
           style={{
             display: "flex",
             justifyContent: "flex-end",
-            paddingBottom: "8px"
+            padding: `${globals.leftSidebarSectionPadding}px ${globals.leftSidebarSectionPadding}px 8px ${globals.leftSidebarSectionPadding}px`
           }}
         >
           {isDiffExp || isUserDefined ? (
